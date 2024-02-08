@@ -49,21 +49,24 @@ In OOP terms, these resources would be organized as follows:
 
 ```js
 class FitnessPlan {
+    // common fields between ClassPlan, ExercisePlan, and any future type of FitnessPlan
     ...
 }
 
 class ClassPlan extends FitnessPlan {
+    // class-specific fields, such as host, location, time, isVirtual
     ...
 }
 
 class ExercisePlan extends FitnessPlan {
+    // exercise-specific fields, such as reps, sets
     ...
 }
 ```
 
-In MongoDB, using discriminators for...
+#### In MongoDB, using discriminators for...
 
-#### Models
+##### Models
 
 ```js
 // General FitnessPlan
@@ -101,7 +104,7 @@ const ClassPlan = FitnessPlan.discriminator('ClassPlan',
 
 All of these entities will be stored in one collection in the database as sub-documents on `FitnessDate`
 
-#### CRUDing
+##### CRUDing
 
 When using these models in Create and Update, I will need separate routes for each model as they have different fields.
 
